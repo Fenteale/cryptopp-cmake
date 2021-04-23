@@ -71,7 +71,7 @@ set(TEST_CXX_FILE ${TEST_PROG_DIR}/test_cxx.cxx)
 
 option(BUILD_STATIC "Build static library" ON)
 option(BUILD_SHARED "Build shared library" ON)
-option(BUILD_TESTING "Build library tests" ON)
+option(BUILD_TESTING "Build library tests" OFF)
 option(BUILD_DOCUMENTATION "Use Doxygen to create the HTML based API documentation" OFF)
 option(USE_INTERMEDIATE_OBJECTS_TARGET "Use a common intermediate objects target for the static and shared library targets" ON)
 
@@ -1125,7 +1125,7 @@ endif ()
 
 # Development package
 if (BUILD_STATIC)
-  export(TARGETS cryptopp-static FILE ${export_name}.cmake )
+  export(TARGETS cryptopp-static APPEND FILE ${export_name}.cmake )
   install(TARGETS cryptopp-static EXPORT ${export_name} DESTINATION ${CMAKE_INSTALL_LIBDIR})
 endif ()
 install(FILES ${cryptopp_HEADERS} DESTINATION include/cryptopp)
